@@ -1,7 +1,7 @@
 -- Observer design pattern.
-local inspect = require("inspect")
-
 local observer = {}
+
+-- captured variable that serves as model of observer construct
 local observerContainer = {}
 
 -- Register
@@ -91,10 +91,4 @@ function observer.notify(subject, signal, ...)
   end
 end
 
-return setmetatable(observer, {
-  __index = function(t, k)
-    if k == "container" then
-      return observerContainer
-    end
-  end
-})
+return observer
